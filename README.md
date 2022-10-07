@@ -2,7 +2,7 @@
 
 As confusing as it gets, the repo name stands for
 
-> **JAX**-like trans**for**mation in lib**torch**
+> **JAX**-like trans**form**ation in lib**torch**
 
 ## Goals
 

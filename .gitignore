@@ -1,0 +1,16 @@
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+CMakeDoxyfile.in
+detect_cuda*
+*.swp
+Makefile
+*.a
+src/test
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing
+*.cmake
+tests/unit_tests
+.cache
+compile_commands.json
