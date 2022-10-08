@@ -4,13 +4,6 @@
 
 namespace jxt
 {
-template <class F, class... Args>
-std::result_of_t<F && (Args && ...)>
-identity(F && f, Args &&... args)
-{
-  return f(args...);
-}
-
 template <typename Ret, typename... Args>
 class vmap
 {
@@ -23,6 +16,7 @@ public:
   Ret operator()(Args &&... args) { return _f(args...); }
 
 private:
+  // Store this but let's hope that the compiler can optimize it away... who knows.
   std::function<Ret(Args...)> _f;
 };
 }
