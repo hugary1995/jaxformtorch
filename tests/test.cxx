@@ -8,8 +8,9 @@
 
 TEST_CASE("wrap a function", "[function]")
 {
-  std::function<double(double)> f = (double (*)(double)) & std::sin;
-  jxt::vmap<double, double> f_mapped(f);
+  // Urgh, this cast is unfortunately necessary to help the compiler disambiguate std::sin as it is
+  // an overloaded function...
+  std::function<double(double)> sin_double = (double (*)(double)) & std::sin;
 
-  REQUIRE(f_mapped(5.5) == Approx(std::sin(5.5)));
+  REQUIRE(jxt::vmap<double, double>(sin_double)(5.5) == Approx(std::sin(5.5)));
 }
