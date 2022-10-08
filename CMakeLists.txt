@@ -20,7 +20,7 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# torch, for which we are going to rely on the system for now
+# torch
 find_package(Torch REQUIRED)
 
 # Catch2, for testing
