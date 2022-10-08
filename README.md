@@ -1,4 +1,4 @@
-# JAXForTorch
+# JAXFormTorch
 
 As confusing as it gets, the repo name stands for
 
