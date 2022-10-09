@@ -6,11 +6,16 @@
 #include <cmath>
 #include "jaxformtorch.h"
 
-TEST_CASE("wrap a function", "[function]")
+TEST_CASE("vmap a lambda", "[function]")
 {
-  // Urgh, this cast is unfortunately necessary to help the compiler disambiguate std::sin as it is
-  // an overloaded function...
-  std::function<double(double)> sin_double = (double (*)(double)) & std::sin;
+  int64_t batch_size = 5;
+  int64_t n = 3;
+  torch::Tensor x = torch::randn({batch_size, n});
 
-  REQUIRE(jxt::vmap<double, double>(sin_double)(5.5) == Approx(std::sin(5.5)));
+  // vmapped norm
+  torch::Tensor norm_x = jxt::vmap([](const torch::Tensor & x) { return torch::norm(x); })(x);
+  // 2-norm along axis 1
+  torch::Tensor correct = torch::norm(x, 2, 1);
+
+  REQUIRE(torch::allclose(norm_x, correct));
 }
