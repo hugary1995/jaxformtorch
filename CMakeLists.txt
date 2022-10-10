@@ -3,7 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 project(JAXFORMTORCH LANGUAGES CXX)
 
 # Let's be very careful
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_options(-Wall -Wextra -pedantic)
 
 # For debugging
 option(DEBUG "include debugging information" OFF)
